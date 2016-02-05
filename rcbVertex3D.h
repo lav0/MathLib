@@ -1,11 +1,10 @@
 #pragma once
 
-#include "stdafx.h"
 #include "rcbVector3D.h"
 #include <set>
 
 class rcbVertex3D;
-////555
+
 bool unite_vertices(rcbVertex3D*, rcbVertex3D*);
 
 //------------------------------------------------------------------------------
