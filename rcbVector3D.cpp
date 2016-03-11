@@ -69,7 +69,7 @@ bool operator!=(const rcbVector3D& a_vc_left, const rcbVector3D& a_vc_right)
 //==============================================================================
 bool operator||(const rcbVector3D& a_vc_left, const rcbVector3D& a_vc_right)
 {
-  return is_zero_dbl(a_vc_left.vector_mul(a_vc_right).norm());
+  return (a_vc_left.vector_mul(a_vc_right)).is_zero_vector();
 }
 
 
@@ -145,7 +145,7 @@ void rcbVector3D::normalize()
 //==============================================================================
 bool rcbVector3D::is_zero_vector() const
 {
-  return square_norm() < _ZERO;
+  return square_norm() < _ZERO * _ZERO;
 }
 
 //==============================================================================
@@ -184,7 +184,33 @@ rcbVector3D rcbVector3D::vector_mul(const rcbVector3D& a_vc) const
 //==============================================================================
 bool rcbVector3D::is_orthogonal(const rcbVector3D& a_vc) const
 {
+  // dot production
   return is_zero_dbl( *this * a_vc );
 }
-  
+
+//==============================================================================
+bool rcbVector3D::is_collinear(const rcbVector3D& a_vc) const
+{
+  // cross production
+  auto vc = this->vector_mul(a_vc);
+  return vc.is_zero_vector();
+}
+
+//==============================================================================
+bool rcbVector3D::is_parallel(const rcbVector3D& a_vc) const
+{
+  return this->is_collinear(a_vc) && (*this * a_vc > 0);
+}
+
+//==============================================================================
+bool rcbVector3D::is_antiparallel(const rcbVector3D& a_vc) const
+{
+  return this->is_collinear(a_vc) && (*this * a_vc < 0);
+}
+
+//==============================================================================
+rcbVector3D rcbVector3D::inverted() const
+{
+  return rcbVector3D(-m_x, -m_y, -m_z); 
+}
 

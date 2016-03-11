@@ -39,12 +39,15 @@ public:
   virtual double square_norm() const;
   
   bool is_orthogonal(const rcbVector3D&) const;
+  bool is_collinear(const rcbVector3D&) const;
+  bool is_parallel(const rcbVector3D&) const;
+  bool is_antiparallel(const rcbVector3D&) const;
 
   double getX() const { return m_x; }
   double getY() const { return m_y; }
   double getZ() const { return m_z; }
 
-  rcbVector3D inverted() const { return rcbVector3D(-m_x, -m_y, -m_z); }
+  rcbVector3D inverted() const;
 
   rcbVector3D vector_mul(const rcbVector3D&) const;
   
