@@ -192,4 +192,3 @@ bool rcbVector3D::is_orthogonal(const rcbVector3D& a_vc) const
   return is_zero_dbl( *this * a_vc );
 }
   
-
