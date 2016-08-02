@@ -25,14 +25,14 @@ rcbUnitVector3D::rcbUnitVector3D(const rcbVector3D& a_vc)
 rcbUnitVector3D::rcbUnitVector3D(const rcbUnitVector3D& a_uvc)
   : rcbVector3D(a_uvc.getX(), a_uvc.getY(), a_uvc.getZ())
 {
-  _ASSERT(is_zero_dbl(rcbVector3D::square_norm()-1));
+  assert(is_zero_dbl(rcbVector3D::square_norm()-1));
 }
 
 //==============================================================================
 rcbUnitVector3D::rcbUnitVector3D(rcbUnitVector3D&& a_uvc_rvalue)
   : rcbVector3D(dynamic_cast<rcbVector3D&&>(a_uvc_rvalue))
 {
-  _ASSERT(is_zero_dbl(rcbVector3D::square_norm()-1));
+  assert(is_zero_dbl(rcbVector3D::square_norm()-1));
 }
 
 //==============================================================================
@@ -40,40 +40,40 @@ rcbUnitVector3D::rcbUnitVector3D(rcbVector3D&& a_vc_rvalue)
 {
   a_vc_rvalue.normalize();
   rcbVector3D::operator=(a_vc_rvalue);
-  _ASSERT(is_zero_dbl(rcbVector3D::square_norm()-1));
+  assert(is_zero_dbl(rcbVector3D::square_norm()-1));
 }
 
 //==============================================================================
 rcbUnitVector3D& rcbUnitVector3D::operator=(rcbUnitVector3D&& a_uvc_rvalue)
 {
   rcbVector3D::operator=(dynamic_cast<rcbVector3D&&>(a_uvc_rvalue));
-  _ASSERT(is_zero_dbl(rcbVector3D::square_norm()-1));
+  assert(is_zero_dbl(rcbVector3D::square_norm()-1));
   return *this;
 }
 
 //==============================================================================
 double rcbUnitVector3D::norm() const
 {
-  _ASSERT(is_zero_dbl(rcbVector3D::square_norm()-1));
+  assert(is_zero_dbl(rcbVector3D::square_norm()-1));
   return 1.0;
 }
 
 //==============================================================================
 double rcbUnitVector3D::square_norm() const
 {
-  _ASSERT(is_zero_dbl(rcbVector3D::square_norm()-1));
+  assert(is_zero_dbl(rcbVector3D::square_norm()-1));
   return 1.0;
 }
 
 //==============================================================================
 void rcbUnitVector3D::normalize()
 {
-  _ASSERT(is_zero_dbl(rcbVector3D::square_norm()-1));
+  assert(is_zero_dbl(rcbVector3D::square_norm()-1));
 }
 //==============================================================================
 bool rcbUnitVector3D::is_zero_vector() const
 {
-  _ASSERT(is_zero_dbl(rcbVector3D::square_norm()-1));
+  assert(is_zero_dbl(rcbVector3D::square_norm()-1));
   return false;
 }
 //==============================================================================

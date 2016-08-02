@@ -10,7 +10,7 @@ static bool solve_sphere_plane_plane_system(
   rcbVector3D& a_vc_out1,rcbVector3D& a_vc_out2
 )
 {
-  _ASSERT(!(a_line_1_coefs || a_line_2_coefs));
+  assert(!(a_line_1_coefs || a_line_2_coefs));
   
   auto a1 = a_sphere_coefs.getX();
   auto b1 = a_sphere_coefs.getY();
@@ -43,7 +43,7 @@ static bool solve_sphere_plane_plane_system(
 
   while (is_zero_dbl(a2) || is_zero_dbl(b3 * a2 - a3 * b2)) 
   {
-    _ASSERT(components_replaced_count < 3);
+    assert(components_replaced_count < 3);
     forward_replace_components(a1, b1, c1);
     forward_replace_components(a2, b2, c2);
     forward_replace_components(a3, b3, c3);
@@ -134,7 +134,7 @@ bool rcbSphere::intersection(
     y = 1;
     z = 1;
   }  
-  else { _ASSERT(0); }
+  else { assert(0); }
   
   rcbUnitVector3D uvc_aux(x, y, z);
   rcbUnitVector3D uvc_norm1(uvc.vector_mul(uvc_aux));

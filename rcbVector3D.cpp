@@ -2,8 +2,8 @@
 #include "rcbVector3D.h"
 
 
-bool is_zero_dbl(double a) { return abs(a) < _ZERO; }
-bool is_zero_dbl(double a, double tolerance) { return abs(a) < tolerance; }
+bool is_zero_dbl(double a) { return fabs(a) < _ZERO; }
+bool is_zero_dbl(double a, double tolerance) { return fabs(a) < tolerance; }
 
 //==============================================================================
 //  EXTERNAL OPERATORS 
@@ -83,6 +83,11 @@ rcbVector3D::rcbVector3D()
 rcbVector3D::rcbVector3D(double a_x, double a_y, double a_z) 
   : m_x(a_x), m_y(a_y), m_z(a_z) {}
 
+rcbVector3D::rcbVector3D(const rcbVector3D& a_vc)
+: m_x(a_vc.m_x)
+, m_y(a_vc.m_y)
+, m_z(a_vc.m_z)
+{}
 
 //==============================================================================
 rcbVector3D::rcbVector3D(rcbVector3D&& a_vc_rvalue)
@@ -131,7 +136,7 @@ void rcbVector3D::normalize()
   
   if (is_zero_dbl(sq_norm, _ZERO_SQ))
   {
-    _ASSERT(0);
+    assert(0);
     become(0, 0, 1);
     return;
   }

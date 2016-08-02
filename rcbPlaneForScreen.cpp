@@ -16,7 +16,7 @@ rcbPlaneForScreen::rcbPlaneForScreen(
 //
 //
 {
-  _ASSERT(!(m_uvc_up_direction || get_norm())); 
+  assert(!(m_uvc_up_direction || get_norm())); 
   
   if (!m_uvc_up_direction.is_orthogonal(get_norm())) 
   {

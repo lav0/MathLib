@@ -6,9 +6,9 @@
 //==============================================================================
 bool unite_vertices(rcbVertex3D* a_vx_left, rcbVertex3D* a_vx_right)
 {
-  _ASSERT(a_vx_left);
-  _ASSERT(a_vx_right);
-  _ASSERT(
+  assert(a_vx_left);
+  assert(a_vx_right);
+  assert(
     a_vx_left->is_linked_to(*a_vx_right) == a_vx_right->is_linked_to(*a_vx_left)
   );
 

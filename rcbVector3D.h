@@ -24,6 +24,7 @@ public:
   rcbVector3D();
   rcbVector3D(double a_x, double a_y, double a_z);
 
+  rcbVector3D(const rcbVector3D& a_vc);
   rcbVector3D(rcbVector3D&& a_vc_rvalue);
 
   rcbVector3D& operator=(const rcbVector3D& a_vc);

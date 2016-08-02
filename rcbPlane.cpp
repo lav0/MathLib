@@ -40,3 +40,25 @@ double rcbPlane::get_free_coef() const
 { 
   return d_free_coef; 
 }
+
+//==============================================================================
+rcbVector3D rcbPlane::projection(const rcbVector3D& vc)
+{
+    auto axis = m_uvc_norm.vector_mul(vc);
+    
+    if (is_zero_dbl(axis.square_norm()))
+    {
+        return rcbVector3D(0.0, 0.0, 0.0);
+    }
+    
+    rcbUnitVector3D uvc_axis(axis);
+    
+    rcbQuaternion q(Rotation(uvc_axis, M_PI_2));
+    auto uvc_on_plane = q.turn(m_uvc_norm);
+    
+    auto length = vc.norm();
+    auto angle  = vc ^ uvc_on_plane;
+    auto cosine = cos(angle);
+    
+    return uvc_on_plane * cosine * length;
+}

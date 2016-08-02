@@ -6,11 +6,7 @@
 #pragma once
 
 #include <stdio.h>
-#include <tchar.h>
-
-#include <vector>
-#include <functional>
-#include <memory>
+#include <cassert>
 #include <cmath>
 
 enum eRubicColor { RC_RED, RC_GREEN, RC_BLUE, RC_YELLOW, RC_BLACK, RC_BLRD };
