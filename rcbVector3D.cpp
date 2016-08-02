@@ -177,6 +177,12 @@ rcbVector3D& rcbVector3D::operator+=(const rcbVector3D& a_vc)
 }
 
 //==============================================================================
+rcbVector3D rcbVector3D::inverted() const
+{
+    return rcbVector3D(-getX(), -getY(), -getZ());
+}
+
+//==============================================================================
 rcbVector3D rcbVector3D::vector_mul(const rcbVector3D& a_vc) const
 {
   return rcbVector3D(

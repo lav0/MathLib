@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-#include "/Users/Andrey/Documents/dev/Xcode Projects/mathLibMac0/rcbPlane.h"
+#include "../rcbPlane.h"
 
 bool testPlane(const rcbUnitVector3D& normal,
                const rcbVector3D& expected)
@@ -44,8 +44,10 @@ int main(int argc, const char * argv[]) {
     {
         std::cout << "FAILED, sorry :(\n";
     }
+    else
+    {
+        std::cout << "All tests passed :) \n";
+    }
     
-    // insert code here...
-    std::cout << "Hello, World!\n";
     return 0;
 }
