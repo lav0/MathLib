@@ -33,7 +33,7 @@ public:
   virtual ~rcbVector3D() {}
 
   virtual void normalize();
-
+  virtual bool is_normalized() const;
   virtual bool is_zero_vector() const;
 
   virtual double norm() const;
@@ -49,7 +49,6 @@ public:
   double getZ() const { return m_z; }
 
   rcbVector3D inverted() const;
-
   rcbVector3D vector_mul(const rcbVector3D&) const;
   
   rcbVector3D& operator+=(const rcbVector3D&);

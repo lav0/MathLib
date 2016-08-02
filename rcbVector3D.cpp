@@ -136,17 +136,29 @@ void rcbVector3D::normalize()
   
   if (is_zero_dbl(sq_norm, _ZERO_SQ))
   {
-    assert(0);
-    become(0, 0, 1);
-    return;
-  }
-  if (is_zero_dbl(sq_norm - 1, _ZERO_SQ)) {
+    assert(false);
+
+    become(0.0, 0.0, 1.0);
+
     return;
   }
 
-  double d_inv = 1 / norm();
+  if (is_zero_dbl(sq_norm - 1, _ZERO_SQ)) 
+  {
+    return;
+  }
+
+  double d_inv = 1 / sqrt(sq_norm);
+
   become(m_x * d_inv, m_y * d_inv, m_z * d_inv);
 }
+
+//==============================================================================
+bool rcbVector3D::is_normalized() const
+{
+  return is_zero_dbl(square_norm() - 1.0, _ZERO_SQ);
+}
+
 //==============================================================================
 bool rcbVector3D::is_zero_vector() const
 {

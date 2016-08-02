@@ -14,12 +14,14 @@ public:
   
   rcbUnitVector3D& operator=(rcbUnitVector3D&& a_uvc_rvalue);
 
-  virtual void normalize() override;
-
-  virtual bool is_zero_vector() const override;
+  void normalize()            override;
+  bool is_normalized()  const override;
+  bool is_zero_vector() const override;
   
-  virtual double norm() const override;
-  virtual double square_norm() const override;
+  double norm()        const override;
+  double square_norm() const override;
+
+  rcbVector3D projectionOnPlane(const rcbVector3D& vc) const;
   
   static rcbUnitVector3D ort_x() { return rcbUnitVector3D(1.0, 0.0, 0.0); };
   static rcbUnitVector3D ort_y() { return rcbUnitVector3D(0.0, 1.0, 0.0); };

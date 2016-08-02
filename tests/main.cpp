@@ -17,14 +17,14 @@ bool testPlane(const rcbUnitVector3D& normal,
     
     rcbVector3D vc(1.0, 0.0, 1.0);
     
-    rcbVector3D res = plane.projection(vc);
+    rcbVector3D res = plane.get_norm().projectionOnPlane(vc);
     
     bool good = true;
     
     good &= fabs(expected.getX() - res.getX()) < 0.01;
     good &= fabs(expected.getY() - res.getY()) < 0.01;
     good &= fabs(expected.getZ() - res.getZ()) < 0.01;
-    good &= vc.square_norm() >= res.square_norm();
+    good &= vc.square_norm() >= res.square_norm() - 1e-8;
     
     return good;
 }
